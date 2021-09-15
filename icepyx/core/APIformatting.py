@@ -194,13 +194,8 @@ def combine_params(*param_dicts):
     --------
     >>> CMRparams = {'short_name': 'ATL06', 'version': '002', 'temporal': '2019-02-20T00:00:00Z,2019-02-28T23:59:59Z', 'bounding_box': '-55,68,-48,71'}
     >>> reqparams = {'page_size': 10, 'page_num': 1}
-    >>> icepyx.core.APIformatting.combine_params(CMRparams, reqparams)
-    {'short_name': 'ATL06',
-    'version': '002',
-    'temporal': '2019-02-20T00:00:00Z,2019-02-28T23:59:59Z',
-    'bounding_box': '-55,68,-48,71',
-    'page_size': 10,
-    'page_num': 1}
+    >>> combine_params(CMRparams, reqparams)
+    {'short_name': 'ATL06', 'version': '002', 'temporal': '2019-02-20T00:00:00Z,2019-02-28T23:59:59Z', 'bounding_box': '-55,68,-48,71', 'page_size': 10, 'page_num': 1}
     """
     params = {}
     for dictionary in param_dicts:
@@ -224,8 +219,8 @@ def to_string(params):
     --------
     >>> CMRparams = {'short_name': 'ATL06', 'version': '002', 'temporal': '2019-02-20T00:00:00Z,2019-02-28T23:59:59Z', 'bounding_box': '-55,68,-48,71'}
     >>> reqparams = {'page_size': 10, 'page_num': 1}
-    >>> params = icepyx.core.APIformatting.combine_params(CMRparams, reqparams)
-    >>> icepyx.core.APIformatting.to_string(params)
+    >>> params = combine_params(CMRparams, reqparams)
+    >>> to_string(params)
     'short_name=ATL06&version=002&temporal=2019-02-20T00:00:00Z,2019-02-28T23:59:59Z&bounding_box=-55,68,-48,71&page_size=10&page_num=1'
     """
     param_list = []
